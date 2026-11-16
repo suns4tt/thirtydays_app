@@ -1,0 +1,7 @@
+package com.example.thirtydays.model
+
+data class Tip(
+    val day: Int,
+    val title: String,
+    val description: String
+)
