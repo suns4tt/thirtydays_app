@@ -75,7 +75,7 @@ fun AnimatedTipCard(tip: Tip, index: Int, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TipsList() {
+fun TipsList(modifier: Modifier) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
