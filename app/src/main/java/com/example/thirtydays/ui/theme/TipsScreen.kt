@@ -4,10 +4,12 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -74,16 +76,21 @@ fun AnimatedTipCard(tip: Tip, index: Int, modifier: Modifier = Modifier) {
     }
 }
 
+
 @Composable
-fun TipsList(modifier: Modifier = Modifier) {
+fun TipsList(
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp)
+) {
     LazyColumn(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        contentPadding = contentPadding
     ) {
-        itemsIndexed(TipsRepository.tips) { index, tip ->
-            AnimatedTipCard(
-                tip = tip,
-                index = index
-            )
+        items(
+            items = TipsRepository.tips,
+            key = { tip -> tip.day }
+        ) { tip ->
+            TipCard(tip = tip)
         }
     }
 }

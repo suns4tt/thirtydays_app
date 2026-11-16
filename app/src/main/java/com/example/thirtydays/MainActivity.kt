@@ -54,7 +54,8 @@ fun ThirtyDaysApp() {
         }
     ) { innerPadding ->
         TipsList(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = innerPadding
         )
     }
 }
